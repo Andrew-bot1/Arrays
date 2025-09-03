@@ -47,21 +47,21 @@ namespace Arrays
         static void SortMultiArry()
         {
             int[,] nums = { {54,3,21,50,57,7,73,24,85,79}, {33,11,19,33,51,72,80,6,78,25}, {1,65,4,86,71,52,16,77,29,13}, {23,44,90,70,28,17,53,64,62,83}, {55,98,22,89,34,75,56,58,27,35}, {87,88,8,61,74,14,66,20,59,81}, {18,76,2,5,26,84,15,82,9,60} };
-            int[] sortNums = new int[70];
+            int[,] sortNums = { { 0,0,0,0,0,0,0,0,0,0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
 
             for (int i = 0; i < nums.GetLength(0); i++)
             {
                
                 for (int j = 0; j < nums.GetLength(1); j++)
                 {
-                    int low = 999;
+                    int low=999;
 
                     
                     for (int k = 0; k < nums.GetLength(0); k++)
                     {
                         for (int l = 0; l < nums.GetLength(1); l++)
                         {
-                            if (nums[k, l] < low)
+                            if (nums[k, l] <= low)
                             {
                                 low = nums[k, l];
                             }
@@ -70,7 +70,7 @@ namespace Arrays
                     }
                     
 
-                    sortNums[i] = low;
+                    sortNums[i,j] = low;
                     
                     for (int k = 0; k < nums.GetLength(0); k++)
                     {
@@ -79,6 +79,7 @@ namespace Arrays
                             if (nums[k, l] == low)
                             {
                                 nums[k, l] = 999999;
+                                break;
                             }
                         }
                         
@@ -96,7 +97,10 @@ namespace Arrays
         }
         static void Main(string[] args)
         {
-            //SortArray();
+            Console.WriteLine("Normal array sorted:");
+            SortArray();
+            Console.WriteLine("\n");
+            Console.WriteLine("Multi dimensional array sorted:");
             SortMultiArry();
 
         }
